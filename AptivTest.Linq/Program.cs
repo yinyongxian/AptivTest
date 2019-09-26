@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace AptivTest.Linq
 {
@@ -26,22 +24,38 @@ namespace AptivTest.Linq
             var departments = new List<Department> { department1, department2, department3 };
             var students = new List<Student> { student1, student2, student6 };
 
+            //var query =
+            //    from school in schools
+            //    from department in departments
+            //    from student in students
+            //    where school.ProvinceId == department.ProvinceId
+            //    where school.Province == department.Province
+            //    where school.ProvinceId == student.ProvinceId
+            //    select new StudentDetail
+            //    {
+            //        ProvinceId = school.ProvinceId,
+            //        Province = student.Province,
+            //        SchoolName = school.SchoolName,
+            //        DepartmentName = department.DepartmentName,
+            //        Name = student.Name
+            //    };
+
             var query =
                 from school in schools
-                from department in departments
-                from student in students
-                where school.ProvinceId == department.ProvinceId
-                where school.Province == department.Province
-                where school.ProvinceId == student.ProvinceId
+                join department in departments
+                    on new { school.ProvinceId, school.Province } equals new { department.ProvinceId, department.Province } into ds
+                join student in students
+                    on school.ProvinceId equals student.ProvinceId into ss
+                from d in ds.DefaultIfEmpty()
+                from s in ss.DefaultIfEmpty()
                 select new StudentDetail
                 {
                     ProvinceId = school.ProvinceId,
-                    Province = student.Province,
+                    Province = school.Province,
                     SchoolName = school.SchoolName,
-                    DepartmentName = department.DepartmentName,
-                    Name = student.Name
+                    DepartmentName = d.DepartmentName,
+                    Name = s == null ? "null" : s.Name
                 };
-
 
             query.ToList().ForEach(item =>
             {
