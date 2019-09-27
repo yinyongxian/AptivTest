@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AptivTest.Linq")]
+[assembly: AssemblyTitle("AptivTest.ChainedCall")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AptivTest.Linq")]
+[assembly: AssemblyProduct("AptivTest.ChainedCall")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("89e5bc29-d8ea-4dad-aa25-f6c9b897865e")]
+[assembly: Guid("8dfd2777-26e6-4a30-9e2c-3a2f9d721617")]
 
 // Version information for an assembly consists of the following four values:
 //

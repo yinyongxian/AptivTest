@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29318.209
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AptivTest.Linq", "AptivTest.Linq\AptivTest.Linq.csproj", "{89E5BC29-D8EA-4DAD-AA25-F6C9B897865E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AptivTest.ChainedCall", "AptivTest.ChainedCall\AptivTest.ChainedCall.csproj", "{8DFD2777-26E6-4A30-9E2C-3A2F9D721617}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxCountChar", "MaxCountChar\MaxCountChar.csproj", "{25DE2788-3459-4D66-822F-FAA1FA96EF7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{89E5BC29-D8EA-4DAD-AA25-F6C9B897865E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89E5BC29-D8EA-4DAD-AA25-F6C9B897865E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89E5BC29-D8EA-4DAD-AA25-F6C9B897865E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFD2777-26E6-4A30-9E2C-3A2F9D721617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFD2777-26E6-4A30-9E2C-3A2F9D721617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFD2777-26E6-4A30-9E2C-3A2F9D721617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFD2777-26E6-4A30-9E2C-3A2F9D721617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25DE2788-3459-4D66-822F-FAA1FA96EF7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25DE2788-3459-4D66-822F-FAA1FA96EF7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25DE2788-3459-4D66-822F-FAA1FA96EF7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25DE2788-3459-4D66-822F-FAA1FA96EF7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
