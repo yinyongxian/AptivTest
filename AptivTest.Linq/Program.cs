@@ -8,58 +8,41 @@ namespace AptivTest.Linq
     {
         static void Main(string[] args)
         {
-            var school1 = new School { ProvinceId = 1, Province = "上海", SchoolName = "复旦大学" };
-            var school2 = new School { ProvinceId = 2, Province = "河南", SchoolName = "河南大学" };
-            var school3 = new School { ProvinceId = 3, Province = "北京", SchoolName = "北京大学" };
+            var person1 = new Person { Id = 1, Nickname = "清流" };
+            var person2 = new Person { Id = 2, Nickname = "静流" };
+            var person3 = new Person { Id = 3, Nickname = "空流" };
 
-            var department1 = new Department { ProvinceId = 1, Province = "上海", DepartmentName = "医学系" };
-            var department2 = new Department { ProvinceId = 2, Province = "河南", DepartmentName = "计算机系" };
-            var department3 = new Department { ProvinceId = 3, Province = "北京", DepartmentName = "化学系" };
+            var student1 = new Student { PersonId = 1, Name = "尹永贤", Age = 18, Sex = "男" };
+            var student2 = new Student { PersonId = 2, Name = "静流", Age = 18, Sex = "女" };
+            var student3 = new Student { PersonId = 3, Name = "空流", Age = 18, Sex = "男" };
 
-            var student1 = new Student { ProvinceId = 1, Province = "上海", Name = "清流" };
-            var student2 = new Student { ProvinceId = 2, Province = "河南", Name = "静流" };
-            var student6 = new Student { ProvinceId = 6, Province = "云南", Name = "空流" };
+            var personDetail1 = new PersonDetail() { PersonId = 2, Phone = "18888888888", Address = "上海" };
 
-            var schools = new List<School> { school1, school2, school3 };
-            var departments = new List<Department> { department1, department2, department3 };
-            var students = new List<Student> { student1, student2, student6 };
-
-            //var query =
-            //    from school in schools
-            //    from department in departments
-            //    from student in students
-            //    where school.ProvinceId == department.ProvinceId
-            //    where school.Province == department.Province
-            //    where school.ProvinceId == student.ProvinceId
-            //    select new StudentDetail
-            //    {
-            //        ProvinceId = school.ProvinceId,
-            //        Province = student.Province,
-            //        SchoolName = school.SchoolName,
-            //        DepartmentName = department.DepartmentName,
-            //        Name = student.Name
-            //    };
+            var persons = new List<Person> { person1, person2, person3 };
+            var students = new List<Student> { student1, student2, student3 };
+            var personDetails = new List<PersonDetail> { personDetail1 };
 
             var query =
-                from school in schools
-                join department in departments
-                    on new { school.ProvinceId, school.Province } equals new { department.ProvinceId, department.Province } into ds
-                join student in students
-                    on school.ProvinceId equals student.ProvinceId into ss
-                from d in ds.DefaultIfEmpty()
-                from s in ss.DefaultIfEmpty()
-                select new StudentDetail
-                {
-                    ProvinceId = school.ProvinceId,
-                    Province = school.Province,
-                    SchoolName = school.SchoolName,
-                    DepartmentName = d.DepartmentName,
-                    Name = s == null ? "null" : s.Name
-                };
+                    from person in persons
+                    join student in students
+                        on new { person.Id, Name = person.Nickname } equals new { Id = student.PersonId, student.Name } into ss
+                    join personDetail in personDetails
+                        on person.Id equals personDetail.PersonId into ps
+                    from s in ss
+                    from p in ps.DefaultIfEmpty()
+                    select new
+                    {
+                        person.Id,
+                        Name = person.Nickname,
+                        s.Age,
+                        s.Sex,
+                        Phone = p == null ? "NULL" : p.Phone,
+                        Address = p == null ? "NULL" : p.Address
+                    };
 
             query.ToList().ForEach(item =>
             {
-                var message = $"{item.ProvinceId}/{item.Province}/{item.SchoolName}/{item.DepartmentName}/{item.Name}";
+                var message = $"{item.Id}/{item.Name}/{item.Age}/{item.Sex}/{item.Phone}/{item.Address}";
                 Console.WriteLine(message);
             });
 
